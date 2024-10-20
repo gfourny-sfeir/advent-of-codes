@@ -1,15 +1,13 @@
 package fr.adventofcodes;
 
-import java.util.function.BiFunction;
-
 public class ValueExtractor {
 
-    private static char getLastDigit(String digits) {
-        return digits.charAt(digits.length() - 1);
+    private static String getLastDigit(String digits) {
+        return String.valueOf(digits.charAt(digits.length() - 1));
     }
 
-    private static char getFirstDigit(String digits) {
-        return digits.charAt(0);
+    private static String getFirstDigit(String digits) {
+        return String.valueOf(digits.charAt(0));
     }
 
     public int extract(String string) {
@@ -27,8 +25,6 @@ public class ValueExtractor {
         var firstDigit = getFirstDigit(digits);
         var lastDigit = getLastDigit(digits);
 
-        BiFunction<Character, Character, String> toString = (first, last) -> String.valueOf(first) + last;
-
-        return Integer.parseInt(toString.apply(firstDigit, lastDigit));
+        return Integer.parseInt(firstDigit.concat(lastDigit));
     }
 }
